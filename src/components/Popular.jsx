@@ -110,7 +110,7 @@ const Card = styled.div`
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
-    height: 70%;
+    height: 75%;
     display: flex;
     justify-content: center;
     ailgn-items: center;

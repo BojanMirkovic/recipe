@@ -1,14 +1,18 @@
 import React from 'react'
 import Home from './Home'
-//This component is holding all pages
+import { Route,Routes,BrowserRouter } from 'react-router-dom' //we are wrapping all pages with <Routes>
+import Cuisine from './Cuisine'
+//This component is holding all pages,we are using this component for routing and navigating thru diferent pages
 function 
 Pages() {
   return (
-    <div>
-        <Home/>
-    </div>
+   
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/cusine/:type' element={<Cuisine />} />
+    </Routes>
+    
   )
 }
 
-export default 
-Pages
+export default Pages

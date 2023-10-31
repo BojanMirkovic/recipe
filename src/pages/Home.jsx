@@ -6,7 +6,7 @@ import Veggie from '../components/Veggie'
 function Home() {
   return (
     <Wrapper>
-      <h1>Hello from Home</h1>
+      
         <Veggie/>
         <Popular/>
     </Wrapper>
