@@ -6,25 +6,32 @@ import {Link,useParams} from "react-router-dom"
 
 function Cuisine() {
 
-    const [cusine,setCusine]=useState([]);
+    const [cuisine,setCuisine]=useState([]);
     let params=useParams();//params alow us to change name of page and nvigate to that page
 
-    const getCusine=async(name)=>{
+    const getCuisine=async(name)=>{
+        
         const data=await fetch(`
-        https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cusine=${name}
+        https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}
         `);
         const recipes=await data.json();
-        setCusine(recipes.results)
+        console.log(recipes.results);
+        setCuisine(recipes.results)
+        
     }
+  
 
     useEffect(()=>{
-        getCusine(params.type)//caling function and passing params.type as a name of page
+        getCuisine(params.type)//caling function and passing params.type as a name of page
+        console.log(params.type);
+        
     },[params.type]);//whenever we update/change params this will make useEffect to run 
+    
   return (
  <Grid>
-    {cusine.map((item)=>{
+    {cuisine.map((item)=>{
         return(
-            <Card key={item.Grid}>
+            <Card  key={item.id}>
              <img src={item.image} alt=''/>
              <h4>{item.title}</h4>
             </Card>
@@ -55,6 +62,7 @@ h4 {
     text-align: center;
     padding: 1rem;
 }
+
 `
 
 export default Cuisine
